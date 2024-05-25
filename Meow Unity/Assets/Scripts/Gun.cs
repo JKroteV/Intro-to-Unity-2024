@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-
     public GameObject bulletPrefab;
 
     // Start is called before the first frame update
@@ -16,6 +15,6 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject. Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        GameObject.Instantiate(bulletPrefab, transform.position, Quaternion.identity);
     }
 }
