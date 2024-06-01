@@ -5,8 +5,13 @@ using UnityEngine;
 public class Move2D : MonoBehaviour
 {
 public float acceleration = 1.0f;
+
+public float maxSpeed = 10f;
+
+
 public float jumpForce = 10.0f; 
 private bool isJumping = false;
+
 
 private Rigidbody2D rb = null; 
 
@@ -39,7 +44,7 @@ private Rigidbody2D rb = null;
         float mass = rb.mass; 
         if (Input.GetKey(KeyCode.A))
         {
-        Vector2 movement = new Vector2(-acceleration * mass, 0.0f); 
+        Vector2 movement = new Vector2(-acceleration * mass, -.0f); 
         rb.AddForce(movement, ForceMode2D.Force);
         }
         else if (Input.GetKey(KeyCode.D))
@@ -52,6 +57,10 @@ private Rigidbody2D rb = null;
         {
             isJumping = false; 
             rb.AddForce(new Vector2(0.0f, jumpForce), ForceMode2D.Impulse);
+        }
+       if (rb.velocity.magnitude > maxSpeed)
+        {
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
         }
 
     }
