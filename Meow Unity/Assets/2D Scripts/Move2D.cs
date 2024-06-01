@@ -5,20 +5,17 @@ using UnityEngine;
 public class Move2D : MonoBehaviour
 {
 public float acceleration = 1.0f;
-
 public float maxSpeed = 10f;
-
-
 public float jumpForce = 10.0f; 
 private bool isJumping = false;
-
+private Vector3 startPosition = Vector3.zero;
 
 private Rigidbody2D rb = null; 
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     bool isGrounded()
@@ -36,6 +33,7 @@ private Rigidbody2D rb = null;
         {
             isJumping = true;
         }
+
     }
     
     // Update is called once per frame
@@ -62,6 +60,5 @@ private Rigidbody2D rb = null;
         {
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
         }
-
     }
 }
